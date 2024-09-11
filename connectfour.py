@@ -13,12 +13,14 @@ def checkifwon():
 def b_click(b):
     global clicked, count
     if(b["text"]==" " and clicked == True):
-        b["text"] = "red"
+        b["text"] = "taken"
+        b.configure(bg="red", fg = "red")
         clicked = False
         count += 1
         #checkifwon()
     elif(b["text"]==" " and clicked == False):
-        b["text"] = "yellow"
+        b["text"] = "taken"
+        b.configure(bg="yellow", fg = "yellow")
         clicked = True
         count += 1
         #checkifwon()
@@ -39,7 +41,7 @@ def reset():
     for r in range(6):
         for c in range(7):
             (buttons[r][c]).grid(row=r, column=c)
-            (buttons[r][c]).configure(root, text=" ", command=lambda x1 = r, y1 = c: b_click(buttons[x1][y1]))
+            (buttons[r][c]).configure(command=lambda x1 = r, y1 = c: b_click(buttons[x1][y1]))
     
         
 reset()
